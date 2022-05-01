@@ -3,9 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
-
+body{
+    background-color: black;
+    color: white;
+}
 
 
 .container{
@@ -24,4 +25,33 @@
 .col-4{
     width: 33.3333%;
     padding: 0 15px;
+}
+
+.element-item{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+
+
+}
+.element-item li{
+    list-style: none;
+}
+.element-img{
+    max-width: 170px;
+
+}
+
+
+.element-desc{
+margin-left: 20px;
+
+}
+
+.element-title{
+    margin-left: 10px;
+    text-align: center;
+}
+.element-caption{
+    text-align: center;
 }
