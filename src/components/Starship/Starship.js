@@ -28,7 +28,7 @@ const Starship = () => {
                         <div key={index} className="col-4">
                             <div className="element-item">
                                 <div className="element-title">
-                                    <img src={`https://starwars-visualguide.com/assets/img/starship/${ index + 1}.jpg`} alt="starship" className="element-img" />
+                                    <img src={`https://starwars-visualguide.com/assets/img/starships/${ index + 1}.jpg`} alt="starship" className="element-img" />
                                     <h2 className="element-caption">{starships.name}</h2>
                                 </div>
                                 <ul className="element-desc">
