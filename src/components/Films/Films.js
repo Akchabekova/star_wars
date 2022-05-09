@@ -1,36 +1,38 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import Spinner from "../Spinner";
+import {Link} from "react-router-dom";
+
 
 const Films = () => {
     const [films,setFilms] = useState({})
-    const[page,setPage]=useState(1)
-    useEffect(()=>{
-        axios(`https://swapi.dev/api/films?page=${page}`)
-            .then((res)=>setFilms(res.data))
-    },[page])
+    const [isLoading, setIsLoading] =useState(true)
 
-    if(!films.results) {
-        return "loading..."
+    useEffect(()=>{
+        axios(`https://swapi.dev/api/films`)
+            .then((res) =>{
+                setFilms(res.data)
+                 setIsLoading(false)
+        })
+    },[])
+
+    if(isLoading) {
+        return <Spinner />
+
     }
     return (
         <div>
-            <div className="pagination">
-                {
-                    Array(Math.ceil(films.count/10)).fill(0).map((buttonNum,idx)=>(
-                        <button key={idx} className="pagination-btn" onClick={() => setPage(idx+1)}>{idx+1}</button>
-                    ))
-                }
-            </div>
-
             <div className="row">
                 {
-                    films?.results.map((people,index) => (
-                        <div key={index} className="col-4">
+                    films?.results.map((film,index) => (
+                        <div key={index} className="item-col">
                             <div className="element-item">
+                                <Link to="/films/2">
                                 <div className="element-title">
                                     <img src={`https://starwars-visualguide.com/assets/img/films/${ index + 1}.jpg`} alt="episode" className="element-img" />
-                                    <h2 className="element-caption">{films.title}</h2>
+                                    <h2 className="element-caption">Episode {index+1}: {film.title}</h2>
                                 </div>
+                                </Link>
                             </div>
                         </div>
                     ))

@@ -11,6 +11,8 @@ import Starship from "./components/Starship";
 import Vehicles from "./components/Vehicles";
 import Planets from "./components/Planets";
 import Header from "./components/Header";
+import FilmInfo from "./components/FilmInfo";
+import CharactersInfo from "./components/CharactersInfo";
 
 
 
@@ -23,7 +25,9 @@ const App = () => {
            <Routes>
                <Route path ="/" element ={<HomePage/>} />
                <Route path ="/characters" element ={<Characters />} />
+               <Route path ="/characters/:people" element ={<CharactersInfo />} />
                <Route path ="/films" element ={<Films />} />
+               <Route path ="/films/:episode" element ={<FilmInfo/>} />
                <Route path ="/species" element ={<Species />} />
                <Route path ="/starship" element ={<Starship />} />
                <Route path ="/vehicles" element ={<Vehicles/>} />
