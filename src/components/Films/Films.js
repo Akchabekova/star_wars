@@ -4,6 +4,7 @@ import Spinner from "../Spinner";
 import {Link} from "react-router-dom";
 
 
+
 const Films = () => {
     const [films,setFilms] = useState({})
     const [isLoading, setIsLoading] =useState(true)
@@ -27,7 +28,7 @@ const Films = () => {
                     films?.results.map((film,index) => (
                         <div key={index} className="item-col">
                             <div className="element-item">
-                                <Link to="/films/2">
+                                <Link to={`/films/${index + 1}`}>
                                 <div className="element-title">
                                     <img src={`https://starwars-visualguide.com/assets/img/films/${ index + 1}.jpg`} alt="episode" className="element-img" />
                                     <h2 className="element-caption">Episode {index+1}: {film.title}</h2>

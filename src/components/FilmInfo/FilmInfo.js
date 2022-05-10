@@ -24,16 +24,16 @@ const FilmInfo = () => {
 
         <div className="row">
             <div className="col-5">
-                <img src={`https://starwars-visualguide.com/assets/img/films/1.jpg`} alt="episode"  />
+                <img src={`https://starwars-visualguide.com/assets/img/films/${episode}.jpg`} alt="episode"  />
             </div>
         <div className="col-5">
-            <h2 className="filmInfo-title">
+            <h2 className="info-title">
                 {film.title}
             </h2>
-            <h4 className="filmInfo-desc">Date Created: <span>{film.created}</span></h4>
-            <h4 className="filmInfo-desc">Director: <span> {film.director}</span></h4>
-            <h4 className="filmInfo-desc">Producer(s): <span>{film.producer}</span></h4>
-            <h4 className="filmInfo-desc">Opening Crawl:<span> {film.opening_crawl}</span></h4>
+            <h4 className="info-desc">Date Created: <span>{film.created}</span></h4>
+            <h4 className="info-desc">Director: <span> {film.director}</span></h4>
+            <h4 className="info-desc">Producer(s): <span>{film.producer}</span></h4>
+            <h4 className="info-desc">Opening Crawl:<span> {film.opening_crawl}</span></h4>
         </div>
         </div>
 

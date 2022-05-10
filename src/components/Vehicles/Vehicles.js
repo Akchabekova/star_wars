@@ -1,16 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import Spinner from "../Spinner";
+import {Link} from "react-router-dom";
+
 
 const Vehicles = () => {
     const [vehicles,setVehicles] = useState({})
-    const[page,setPage]=useState(1)
+    const[page,setPage]=useState(0)
     useEffect(()=>{
-        axios(`https://swapi.dev/api/vehicles?page=${page}`)
+        axios(`https://swapi.dev/api/vehicles?page=${page +1}`)
             .then((res)=>setVehicles(res.data))
     },[page])
 
     if(!vehicles.results) {
-        return "loading..."
+        return <Spinner />
     }
     return (
         <div>
@@ -27,21 +30,15 @@ const Vehicles = () => {
                     vehicles?.results.map((vehicles,index) => (
                         <div key={index} className="col-4">
                             <div className="element-item">
+                                <Link to={`/vehicles/${10 * page + index +1 }`}>
                                 <div className="element-title">
-                                    <img src={`https://starwars-visualguide.com/assets/img/vehicles/${ index + 1}.jpg`} alt="person" className="element-img" />
+                                    <img src={`https://starwars-visualguide.com/assets/img/vehicles/${ 10 * page + index +1}.jpg`} alt="vehicles" className="element-img" />
                                     <h2 className="element-caption">{vehicles.name}</h2>
                                 </div>
-                                <ul className="element-desc">
-                                    <li>Model:{vehicles.model}</li>
-                                    <li>Manufacturer:{vehicles.manufacturer}</li>
-                                    <li>Class:{vehicles.vehicle_class}</li>
-                                    <li>Cost:{vehicles.cost_in_credits}</li>
-                                    <li>Speed:{vehicles.max_atmosphering_speed}</li>
-                                    <li>Length:{vehicles.length}</li>
-                                    <li>Cargo Capacity:{vehicles.cargo_capacity}</li>
-                                    <li>Mimimum Crew:{vehicles.crew}</li>
-                                    <li>Passengers:{vehicles.passengers}</li>
-                                </ul>
+                                <div className="element-desc">
+
+                                </div>
+                                </Link>
                             </div>
                         </div>
                     ))

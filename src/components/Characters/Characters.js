@@ -29,21 +29,14 @@ const Characters = () => {
             {
             characters?.results.map((people,index) => (
                 <div key={index} className="item-col">
-                    <Link to="/characters/4">
+                    <Link to={`/characters/${10 * page + index +1 }`}>
               <div className="element-item">
-
                   <div className="element-title">
                   <img src={`https://starwars-visualguide.com/assets/img/characters/${ 10 * page + index +1 }.jpg`} alt="person" className="element-img" />
                   <h2 className="element-caption">{people.name}</h2>
                   </div>
-                  <ul className="element-desc">
-                      {/*<li>Birth year: {people.birth_year}</li>*/}
-                      {/*<li>Height: {people.height}</li>*/}
-                      {/*<li>Mass: {people.mass}</li>*/}
-                      {/*<li>Gender: {people.gender}</li>*/}
-                      {/*<li>Hair color: {people.hair_color}</li>*/}
-                      {/*<li>Skin color: {people.skin_color}</li>*/}
-                  </ul>
+                  <div className="element-desc">
+                  </div>
               </div>
                     </Link>
                 </div>

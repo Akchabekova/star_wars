@@ -9,7 +9,7 @@ const CharactersInfo = () => {
     const [characters, setCharacters] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     useEffect(() => {
-        axios(`https://swapi.dev/api/characters/${people}`)
+        axios(`https://swapi.dev/api/people/${people}`)
             .then((res) =>{
                 setCharacters(res.data)
                 setIsLoading(false)
@@ -24,19 +24,19 @@ const CharactersInfo = () => {
 
         <div className="row">
             <div className="col-5">
-                <img src={`https://starwars-visualguide.com/assets/img/characters/1.jpg`} alt="people"  />
+                <img src={`https://starwars-visualguide.com/assets/img/characters/${people}.jpg`} alt="people"  />
             </div>
             <div className="col-5">
-                <h2 className="CharactersInfo-title">
+                <h2 className="info-title">
                     {characters.title}
                 </h2>
                 <ul className="element-desc">
-                    <li>Birth year: {people.birth_year}</li>
-                    <li>Height: {people.height}</li>
-                    <li>Mass: {people.mass}</li>
-                    <li>Gender: {people.gender}</li>
-                    <li>Hair color: {people.hair_color}</li>
-                    <li>Skin color: {people.skin_color}</li>
+                    <li className="info-desc">Birth year :<span> {characters.birth_year}</span></li>
+                    <li className="info-desc">Height : <span>{characters.height}</span></li>
+                    <li className="info-desc">Mass :<span> {characters.mass}</span></li>
+                    <li className="info-desc">Gender : <span>{characters.gender}</span></li>
+                    <li className="info-desc">Hair color : <span>{characters.hair_color}</span></li>
+                    <li className="info-desc">Skin color : <span>{characters.skin_color}</span></li>
                 </ul>
             </div>
         </div>

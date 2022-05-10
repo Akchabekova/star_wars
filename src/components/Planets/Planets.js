@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import Spinner from "../Spinner";
+import {Link} from "react-router-dom";
 
 const Planets = () => {
     const [planets,setPlanets] = useState({})
@@ -10,7 +12,7 @@ const Planets = () => {
     },[page])
 
     if(!planets.results) {
-        return "loading..."
+        return <Spinner />
     }
     return (
         <div>
@@ -27,20 +29,15 @@ const Planets = () => {
                     planets?.results.map((planets,index) => (
                         <div key={index} className="col-4">
                             <div className="element-item">
+                                <Link to={`/planets/${10 * page + index +1 }`}>
                                 <div className="element-title">
-                                    <img src={`https://starwars-visualguide.com/assets/img/planets/${ index + 1}.jpg`} alt="person" className="element-img" />
+                                    <img src={`https://starwars-visualguide.com/assets/img/planets/${ index + 1}.jpg`} alt="planets" className="element-img" />
                                     <h2 className="element-caption">{planets.name}</h2>
                                 </div>
-                                <ul className="element-desc">
-                                    <li>Population:{planets.population}</li>
-                                    <li>Rotation Period:{planets.rotation_period}</li>
-                                    <li>Orbital Period:{planets.orbital_period}</li>
-                                    <li>Diameter:{planets.diameter}</li>
-                                    <li>Gravity:{planets.gravity}</li>
-                                    <li>Terrain:{planets.terrain}</li>
-                                    <li>Surface Water:{planets.surface_water}</li>
-                                    <li>Climate:{planets.climate}</li>
-                                </ul>
+                                <div className="element-desc">
+
+                                </div>
+                                </Link>
                             </div>
                         </div>
                     ))

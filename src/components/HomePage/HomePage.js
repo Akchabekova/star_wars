@@ -36,10 +36,10 @@ const HomePage = () => {
               </Link>
            </div>
            <div className="col-4">
-             <Link to="/starship">
+             <Link to="/starships">
                  <div className="category-item">
                      <img src={starship} alt="" />
-                     <h5 className="category-desc">Starship</h5>
+                     <h5 className="category-desc">Starships</h5>
                  </div>
              </Link>
            </div>

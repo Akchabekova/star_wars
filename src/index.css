@@ -58,15 +58,19 @@ body{
 
 
 .element-desc{
-margin-left: 20px;
+    margin-left: 20px;
+    text-decoration: none;
+    text-transform: none;
+
 
 }
 
 .element-title{
     margin-left: 10px;
     text-align: center;
+
 }
-.element-caption{
+.element-caption {
     text-align: center;
     background-color: white;
     color: black;
@@ -74,8 +78,10 @@ margin-left: 20px;
     font-size: 20px;
     font-weight: 400;
     padding: 5px;
+    text-transform: none;
 
 }
+
 .category-item{
     position: relative;
 }
@@ -105,17 +111,27 @@ margin-left: 20px;
 
 }
 
-.filmInfo-title{
+.info-title{
     margin-bottom: 15px;
+    text-decoration: none;
+    text-transform: none;
 
 }
-.filmInfo-desc{
+.info-desc{
     margin-bottom: 5px;
     font-weight: 500;
     font-size: 24px;
+    text-transform: none;
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.filmInfo-desc span{
+.info-desc span{
     font-weight: 300;
     font-size: 18px;
+    color: white;
+
+}
+.info-img{
+    max-width: 100%;
 }

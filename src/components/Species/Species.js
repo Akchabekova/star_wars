@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import Spinner from "../Spinner";
+import {Link} from "react-router-dom";
 
 const Species = () => {
     const [species,setSpecies] = useState({})
-    const[page,setPage]=useState(1)
+    const[page,setPage]=useState(0)
     useEffect(()=>{
-        axios(`https://swapi.dev/api/species?page=${page}`)
+        axios(`https://swapi.dev/api/species?page=${page + 1}`)
             .then((res)=>setSpecies(res.data))
     },[page])
 
     if(!species.results) {
-        return "loading..."
+        return < Spinner />
     }
     return (
         <div>
@@ -25,24 +27,19 @@ const Species = () => {
             <div className="row">
                 {
                     species?.results.map((species,index) => (
-                        <div key={index} className="col-4">
+                        <div key={index} className="item-col">
                             <div className="element-item">
+                                <Link to={`/species/${10 * page + index +1 }`}>
                                 <div className="element-title">
-                                    <img src={`https://starwars-visualguide.com/assets/img/species/${ index + 1}.jpg`} alt="" className="element-img" />
+                                    <img src={`https://starwars-visualguide.com/assets/img/species/${ 10 * page + index +1  }.jpg`} alt="" className="element-img" />
                                     <h2 className="element-caption">{species.name}</h2>
                                 </div>
-                                <ul className="element-desc">
-                                    <li>Classification: {species.classification}</li>
-                                    <li>Designation: {species.designation}</li>
-                                    <li>Language: {species.language}</li>
-                                    <li>Avg Lifespan: {species.avarage_lifespan}</li>
-                                    <li>Avg Height: {species.average_height}</li>
-                                    <li>Hair colors: {species.hair_colors}</li>
-                                    <li>Skin colors: {species.skin_colors}</li>
-                                    <li>Eye colors: {species.eye_colors}</li>
-                                </ul>
+                                <div className="element-desc">
+
+                                </div>
+                                </Link>
                             </div>
-                        </div>
+                            </div>
                     ))
                 }
             </div>

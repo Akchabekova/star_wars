@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
+import {Link} from "react-router-dom";
+import Spinner from "../Spinner";
 
-const Starship = () => {
+const Starships = () => {
     const [starships,setStarships] = useState({})
     const[page,setPage]=useState(1)
     useEffect(()=>{
@@ -10,7 +12,7 @@ const Starship = () => {
     },[page])
 
     if(!starships.results) {
-        return "loading..."
+        return <Spinner />
     }
     return (
         <div>
@@ -27,25 +29,18 @@ const Starship = () => {
                     starships?.results.map((starships,index) => (
                         <div key={index} className="col-4">
                             <div className="element-item">
+                                <Link to={`/starships/${10 * page + index +1 }`}>
                                 <div className="element-title">
                                     <img src={`https://starwars-visualguide.com/assets/img/starships/${index +1 }.jpg`} alt="starship" className="element-img" />
                                     <h2 className="element-caption">{starships.name}</h2>
                                 </div>
-                                <ul className="element-desc">
-                                    <li>Model:{starships.model}</li>
-                                    <li>Manufacturer:{starships.manufacturer}</li>
-                                    <li>Class:{starships.starships_class}</li>
-                                    <li>Cost:{starships.cost_in_credits}</li>
-                                    <li>Speed:{starships.max_atmosphering_speed}</li>
-                                    <li>Hyperdrive Rating:{starships.hyperdrive_rating}</li>
-                                    <li>MGLT:{starships.MGLT}</li>
-                                    <li>Length:{starships.length}</li>
-                                    <li>Cargo Capacity:{starships.cargo_capacity}</li>
-                                    <li>Mimimum Crew:{starships.crew}</li>
-                                    <li>Passengers:{starships.passengers}</li>
-                                </ul>
+                                <div className="element-desc">
+
+                                </div>
+                                </Link>
                             </div>
-                        </div>
+                            </div>
+
                     ))
                 }
             </div>
@@ -53,7 +48,7 @@ const Starship = () => {
     );
 };
 
-export default Starship;
+export default Starships;
 
 
 
